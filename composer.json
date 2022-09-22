@@ -1,0 +1,17 @@
+{
+    "name": "77web/phpcon2022-app",
+    "type": "project",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "App\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "77web",
+            "email": "info@77-web.com"
+        }
+    ],
+    "require": {}
+}
