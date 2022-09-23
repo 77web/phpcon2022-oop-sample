@@ -6,8 +6,11 @@ namespace App;
 
 class ShowFormAction
 {
-    public function do(array $errors): void
+    public function do(Box $box): Box
     {
+        $errors = $box->validationErrors;
         include __DIR__.'/../templates/form.php';
+
+        return $box;
     }
 }

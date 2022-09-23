@@ -6,7 +6,7 @@ namespace App;
 
 class SendAction
 {
-    public function do(string $adminEmail): void
+    public function do(Box $box): Box
     {
         $template = <<<EOM
 お客様メールアドレス: %s
@@ -14,12 +14,11 @@ class SendAction
 本文:
 %s
 EOM;
-        $message = sprintf($template, $_POST['email'], $_POST['title'], $_POST['body']);
+        $message = sprintf($template, $box->post['email'], $box->post['title'], $box->post['body']);
         mb_language('ja');
         mb_internal_encoding('UTF-8');
-        if (mb_send_mail($adminEmail, 'お問い合わせがありました', $message)) {
-            $completeAction = new CompleteAction();
-            $completeAction->do();
-        }
+        $box->emailSent = mb_send_mail($box->adminEmail, 'お問い合わせがありました', $message);
+
+        return $box;
     }
 }

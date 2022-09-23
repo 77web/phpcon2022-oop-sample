@@ -6,9 +6,10 @@ namespace App;
 
 class CompleteAction
 {
-    public function do(): void
+    public function do(Box $box): Box
     {
         header('Location: /complete.php');
-        exit;
+
+        return $box;
     }
 }
